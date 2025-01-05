@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Caja del Hotel</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Caja del Hotel</h1>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-period="daily">Diario</button>
+            <button class="tab-btn" data-period="monthly">Mensual</button>
+            <button class="tab-btn" data-period="yearly">Anual</button>
+        </div>
+
+        <div class="registro-diario">
+            <h2>Registro Diario</h2>
+            <p class="subtitle">Ingrese los datos financieros del día</p>
+
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Pagos en Efectivo (S/.)</label>
+                    <input type="number" id="efectivo" min="0" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label>Pagos con Tarjeta (S/.)</label>
+                    <input type="number" id="tarjeta" min="0" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label>Pagos con Yape (S/.)</label>
+                    <input type="number" id="yape" min="0" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label>Transferencias (S/.)</label>
+                    <input type="number" id="transferencia" min="0" step="0.01">
+                </div>
+            </div>
+
+            <button id="guardarRegistro" class="btn-primary">Guardar Registro</button>
+        </div>
+
+        <div class="graficos-container">
+            <div class="grafico-section" id="vista-diaria">
+                <h2>Ingresos Semanales</h2>
+                <canvas id="graficoSemanal"></canvas>
+            </div>
+
+            <div class="grafico-section hidden" id="vista-mensual">
+                <h2>Ingresos Mensuales</h2>
+                <canvas id="graficoMensual"></canvas>
+            </div>
+
+            <div class="grafico-section hidden" id="vista-anual">
+                <h2>Ingresos Anuales</h2>
+                <canvas id="graficoAnual"></canvas>
+            </div>
+        </div>
+
+        <button id="cerrarCaja" class="btn-secondary">Cerrar Caja</button>
+    </div>
+
+    <div id="confirmDialog" class="confirm-dialog hidden">
+        <div class="confirm-dialog-content">
+            <h3>Confirmar Cierre de Caja</h3>
+            <p>¿Está seguro que desea cerrar la caja? Esta acción guardará todos los registros del día.</p>
+            <div class="confirm-dialog-buttons">
+                <button class="btn-secondary" id="cancelarCierre">Cancelar</button>
+                <button class="btn-primary" id="confirmarCierre">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
